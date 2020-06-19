@@ -23,6 +23,7 @@ const INITIAL_STATE = {
   scoresError: "",
 };
 export default function (state = INITIAL_STATE, action) {
+  console.log(state);
   switch (action.type) {
     case GET_QUESTIONS:
       console.log("get here");
@@ -31,7 +32,7 @@ export default function (state = INITIAL_STATE, action) {
         getAllQuestions: action.payload,
         getAllQuestionsError: "",
       };
-    case GET_QUESTIONS_ERROR:
+      case GET_QUESTIONS_ERROR:
       return { ...state, getAllQuestionsError: action.payload };
     case ADD_QUESTION_ERROR:
       return { ...state, addQuestionError: action.payload };

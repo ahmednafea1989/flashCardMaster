@@ -10,6 +10,7 @@ import { getQuestions, getScore } from "../../actions/questions";
 import ScoreModal from "./../../components/ScoreModal";
 class Quiz extends Component {
   onSubmit = async (formValues, dispatch) => {
+    console.log(this.props.allQuestions);
     try {
       await axios.post("/api/score", formValues, {
         headers: { authorization: localStorage.getItem("token") },
@@ -25,9 +26,9 @@ class Quiz extends Component {
     
   }
   renderList = () => {
-    if (this.props.allQuestions.length === 0) {
-      return <Header content='No Questions yet' />;
-    } else {
+    // if (this.props.allQuestions.length === 0) {
+    //   return <Header content='No Questions yet' />;
+    // } else {
       const { handleSubmit } = this.props;
       return (
         <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -64,7 +65,7 @@ class Quiz extends Component {
           <ScoreModal score={this.props.score.score} />
         </form>
       );
-    }
+    // }
   };
   render() {
     console.log(this.props.allQuestions);
